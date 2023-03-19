@@ -16,25 +16,10 @@ public class Solution {
         int two = scanner.nextInt();
         int three = scanner.nextInt();
 
-        if(one < three + two) {
+        if ((one < two + three) && (two < three + one) && (three < one + two)) {
             System.out.println(TRIANGLE_EXISTS);
-        }
 
-         else if (two < one + three){
-            System.out.println(TRIANGLE_EXISTS);
-        }
-
-        else if (three < one + two) {
-            System.out.println(TRIANGLE_EXISTS);
-        }
-        else if(one >= three + two ) {
-            System.out.println(TRIANGLE_NOT_EXISTS);
-
-        }
-        else if (two >= one + three){
-            System.out.println(TRIANGLE_NOT_EXISTS);
-        }
-        else if (three >= one + two){
+        }else {
             System.out.println(TRIANGLE_NOT_EXISTS);
         }
     }
