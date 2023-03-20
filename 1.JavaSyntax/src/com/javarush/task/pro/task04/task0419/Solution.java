@@ -12,7 +12,11 @@ public class Solution {
         int number = scanner.nextInt();
         int sum = 0;
 
-        //напишите тут ваш код
+       while (number > 0){
+           sum +=number;
+           number--;
+       }
+
         System.out.println(sum);
     }
 }
