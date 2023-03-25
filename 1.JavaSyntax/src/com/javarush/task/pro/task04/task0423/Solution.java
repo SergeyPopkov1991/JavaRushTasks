@@ -9,18 +9,17 @@ import java.util.Scanner;
 public class Solution {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        int x = scanner.nextInt();
+        int y = scanner.nextInt();
+        int z = scanner.nextInt();
+        int b = scanner.nextInt();
+        int c = scanner.nextInt();
 
-
-        int sum =0 ;
-        for (int i = 0 ; i <5 ; i ++){
-            if (scanner.hasNextInt()){
-                int number = scanner.nextInt();
-                sum +=number;
-            }
-
-
+        int i ;
+        for ( i = 0 ; i <=5 ; i ++){
+           int midle = (x + y + z + b+ c)/5;
+            System.out.println(midle);
         }
-        System.out.println(sum/5);
 
 
     }
