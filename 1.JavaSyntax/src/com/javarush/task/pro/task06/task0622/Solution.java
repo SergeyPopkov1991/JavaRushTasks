@@ -3,7 +3,7 @@ package com.javarush.task.pro.task06.task0622;
 import java.util.Scanner;
 
 /* 
-Диабло (1)
+Диабло (3)
 */
 
 public class Solution {
@@ -15,35 +15,23 @@ public class Solution {
     public static String winPhrase = "Амиго одержал победу над Диабло и выбил из его головы загадочный кристалл.";
     public static String loosePhrase = "Диабло победил Амиго.";
     public static int diabloPosition;
-    public static int  amigoLives = 9;
+    public static int amigoLives = 9;
     public static int diabloLives = 9;
-
-    public static void amigoLostLife(){
-        amigoLives =   amigoLives - 1;
-
-    }
-
-    public static void diabloLostLife(){
-        diabloLives = diabloLives - 3;
-
-    }
-
-    public static int amigoAttacks(){
-
-        return getRandomNumber(3);
-
-
-    }
-
-
-    public static int diabloDefends(){
-        return getRandomNumber(3);
-    }
 
     public static void main(String[] args) {
         diabloPosition = getRandomNumber(4);
 
         findDiablo();
+
+        battle();
+
+        isAmigoWin();
+        if (isAmigoWin()==true){
+            System.out.println(winPhrase);
+
+        }else {
+            System.out.println(loosePhrase);
+        }
     }
 
     public static void findDiablo() {
@@ -57,6 +45,45 @@ public class Solution {
             } else {
                 System.out.println(getPositionPhrase);
             }
+        }
+    }
+
+    public static void amigoLostLife() {
+        amigoLives--;
+    }
+
+    public static void diabloLostLife() {
+        diabloLives -= 3;
+    }
+
+    public static int amigoAttacks() {
+        return getRandomNumber(3);
+    }
+
+    public static int diabloDefends() {
+        return getRandomNumber(3);
+    }
+
+    public static void battle() {
+        while (diabloLives > 0 && amigoLives > 0) {
+            if (amigoAttacks() == diabloDefends()) {
+                System.out.println(diabloDefendPhrase);
+                amigoLostLife();
+            } else {
+                System.out.println(amigoAttackPhrase);
+                diabloLostLife();
+            }
+        }
+    }
+
+
+    public static boolean isAmigoWin(){
+        if (diabloLives==0){
+
+            return true;
+        }else {
+
+            return false;
         }
     }
 
