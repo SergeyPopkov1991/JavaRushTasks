@@ -24,21 +24,6 @@ public class Solution {
             }
         }
 
-        for (int i = 0; i < bombs.length ; i++) {
-            for (int count = 0; count < 10 ; ) {
-                int j = (int) (Math.random() * width);
-                if(bombs[i][j] == 0 ){
-
-                    bombs[i][j] = 1;
-                    count++;
-                }
-
-            }
-
-
-        }
-
-
 
         for (int i = 0; i < field.length; i++) {
             int j = (int) (Math.random() * width);
@@ -46,22 +31,41 @@ public class Solution {
 
         }
 
-        for (int i = 0; i < bombs.length; i++) {
-            for (int j = 0; j < bombs[i].length; j++) {
-                System.out.print(bombs[i][j]);
+        for (int i = 0; i < bombs.length ; i++) {
+            for (int count = 0; count < 10 ; ) {
+                int j = (int) (Math.random() * width);
+                if(bombs[i][j] == 0 ){
+                    bombs[i][j] = 1;
+                    count++;
+                }
+            }
+        }
+
+
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (field[i][j].equals(robotank) && bombs[i][j] == 1 ){
+                    field[i][j] = hit;
+                }
+
+
+            }
+
+        }
+
+
+
+
+
+
+
+        for (int i = 0; i < field.length; i++) {
+            for (int j = 0; j < field[i].length; j++) {
+                System.out.print(field[i][j]);
 
             }
             System.out.println();
         }
-
-//
-//        for (int i = 0; i < field.length; i++) {
-//            for (int j = 0; j < field[i].length; j++) {
-//                System.out.print(field[i][j]);
-//
-//            }
-//            System.out.println();
-//        }
 
 
     }

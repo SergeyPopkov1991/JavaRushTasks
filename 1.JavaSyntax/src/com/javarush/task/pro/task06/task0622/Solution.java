@@ -25,8 +25,7 @@ public class Solution {
 
         battle();
 
-        isAmigoWin();
-        if (isAmigoWin()==true){
+        if (isAmigoWin()){
             System.out.println(winPhrase);
 
         }else {
@@ -78,13 +77,8 @@ public class Solution {
 
 
     public static boolean isAmigoWin(){
-        if (diabloLives==0){
 
-            return true;
-        }else {
-
-            return false;
-        }
+        return diabloLives <=0;
     }
 
     public static int getRandomNumber(int range) {
