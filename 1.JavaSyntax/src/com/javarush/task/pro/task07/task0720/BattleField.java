@@ -13,7 +13,25 @@ public class BattleField {
     public static String galavirDestroy = "Вражеский корабль повержен";
 
     public static void main(String[] args) {
-        //напишите тут ваш код
+        GalavirXIII galavirXIII = new GalavirXIII();
+        Nimrod nimrod = new Nimrod();
+        do{
+            System.out.println(galavirAttack);
+            nimrod.defend(galavirXIII.attack());
+            if (isNimrodAlive(nimrod)){
+                System.out.println(nimrodAttack);
+                galavirXIII.defend(nimrod.attack());
+            }else {
+                break;
+            }
+
+        } while (isGalavirAlive(galavirXIII));
+
+
+
+
+
+
     }
 
     public static boolean isNimrodAlive(Nimrod nimrod) {

@@ -8,10 +8,17 @@ public class Nimrod {
     public int health = 1000000;
 
     public void  defend(int damage){
-        health = health - damage;
+
+        health -=  applyShield(damage);
     }
 
     public int attack() {
-        return rocket;
+        return angelicaKiss;
+    }
+
+    public byte applyShield(int damage){
+        return (byte) damage;
     }
 }
+
+
