@@ -1,4 +1,4 @@
-package com.javarush.task.pro.task06.task0610;
+package com.javarush.task.pro.task06.task0607.task0610;
 
 public  class Person {
     private String firstName;
