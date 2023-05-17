@@ -13,14 +13,20 @@ public class Solution {
     }
 
     public static StringBuilder addTo(String string, String[] strings) {
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder(string);
+        for (int i = 0; i < strings.length; i++) {
+            stringBuilder.append(i);
+            
+        }
 
 
-        return stringBuilder.append("jfs");
+        return stringBuilder;
     }
 
     public static StringBuilder replace(String string, String str, int start, int end) {
+        StringBuilder stringBuilder = new StringBuilder(string);
+        return stringBuilder.replace(start , end , str);
 
-        return null;
+
     }
 }
