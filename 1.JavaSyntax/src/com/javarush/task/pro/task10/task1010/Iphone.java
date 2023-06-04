@@ -17,13 +17,39 @@ public class Iphone {
         this.price = price;
     }
 
+    public boolean equals(Object obj) {
+        if (this == obj){
+            return  true;
+        }
+        if (obj == null) {
+            return  false;
+
+        }
+
+        if (!(obj instanceof Iphone)) {
+            return false;
+        }
+
+        Iphone iphone = (Iphone) obj;
+
+        return price  == iphone.price
+        && Objects.equals( model ,iphone.model)
+        && Objects.equals(color , iphone.color);
+
+
+
+
+
+    }
+
 
 
     public static void main(String[] args) {
-        Iphone iphone1 = new Iphone("X", "Black", 999);
-        Iphone iphone2 = new Iphone("X", "Black", 999);
+        Iphone iphone1 = new Iphone(null, "Black", 999);
+        Iphone iphone2 = new Iphone(null, "Black", 999);
 
         System.out.println(iphone1.equals(iphone2));
+        new Object();
     }
 
 }

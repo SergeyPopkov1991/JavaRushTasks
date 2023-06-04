@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 public class Pepl {
 
-    public static Battery[] batteryWarehouse = new Battery[100500];
+    public static Battery[] batteryWarehouse = Battery.getBatteries();
 
     public static void main(String[] args) {
         Robot[] robots = new Robot[]{new Robot(), new Robot(), new Robot(), new Robot(), new Robot(), new Robot(), new Robot()};
@@ -20,8 +20,15 @@ public class Pepl {
     }
 
     public static void distributeBatteries(Robot[] robots) {
+        int i = 0;
+
         for (Robot robot : robots) {
-            robot.replaceBattery(batteryWarehouse[0]);
+            robot.replaceBattery(batteryWarehouse[i++]);
+
+            while (robot.getCharge() < 20) {
+                robot.replaceBattery(batteryWarehouse[i++]);
+
+            }
         }
     }
 }
