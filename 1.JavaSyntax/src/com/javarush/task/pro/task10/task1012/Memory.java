@@ -16,6 +16,15 @@ public class Memory {
     }
 
     public static void executeDefragmentation(String[] array) {
-        //напишите тут ваш код
+        for (int i =  array.length - 1; i >= 0 ; i--) {
+
+            for (int j = 0; j < array.length - 1; j++) {
+                if (array[j]==null ){
+                    array[j] = array[j+1]  ;
+                    array[j+1] = null;
+                }
+            }
+        }
+
     }
 }
