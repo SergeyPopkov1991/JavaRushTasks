@@ -26,10 +26,7 @@ public class Main {
             }
 
         }
-        var list = new ArrayList<>();
-        list.add("Hello");
-        list.add(5);
-        String str = (String) list.get(1);
+
 
         System.out.println(Arrays.toString(array));
     }
