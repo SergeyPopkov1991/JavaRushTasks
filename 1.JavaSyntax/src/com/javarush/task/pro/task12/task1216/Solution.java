@@ -13,11 +13,11 @@ public class Solution {
     private String string = "string";
 
     public static void main(String[] args) {
-        int integer = 22;
-        String string = "string";
-        int[] array = new int[5];
-        ArrayList<String> strings = new ArrayList<String>();
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        Integer maxValue = Integer.valueOf(Integer.MAX_VALUE);
+        var integer = 22;
+        var string = "string";
+        var array = new int[5];
+        var strings = new ArrayList<String>();
+        var  bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        var maxValue = Integer.valueOf(Integer.MAX_VALUE);
     }
 }
