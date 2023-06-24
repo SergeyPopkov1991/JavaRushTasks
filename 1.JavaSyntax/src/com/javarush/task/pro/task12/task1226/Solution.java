@@ -4,7 +4,9 @@ package com.javarush.task.pro.task12.task1226;
 Бой гладиаторов
 */
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Solution {
 
@@ -15,7 +17,29 @@ public class Solution {
                 new Core(5), new Core(6), new Core(7), null, null));
 
         //напишите тут ваш код
+
+        fixRobot(amigoRobot);
+        fixRobot(diegoRobot);
+        printRobot(amigoRobot);
+        printRobot(diegoRobot);
+
     }
 
+    public static void fixRobot(Robot robot) {
+        List<Core> cores = robot.getCores();
+        for (int i = 0; i < cores.size(); i++) {
+            if (cores.get(i)==null ) {
+                cores.set(i , new Core(i) );
+            }
+        }
+    }
+    public static void printRobot(Robot robot) {
+        List<Core> cores = robot.getCores();
+        for (int i = 0; i < cores.size(); i++) {
+            System.out.println(cores.get(i));
+
+        }
+
+    }
 
 }

@@ -1,7 +1,9 @@
 package com.javarush.task.pro.task13.task1301;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 
 /* 
 Оформляем возврат
@@ -22,6 +24,8 @@ public class Solution {
     }
 
     public static HashSet<String> arrayToHashSet(String[] strings) {
-        ;return  null;
+
+
+       return new HashSet<>( Arrays.asList(strings));
     }
 }
