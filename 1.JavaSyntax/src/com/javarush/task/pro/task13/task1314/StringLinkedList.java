@@ -25,7 +25,7 @@ public class StringLinkedList {
     }
 
     public String get(int index) {
-        //напишите тут ваш код
+      return null;
     }
 
     public static class Node {

@@ -13,10 +13,9 @@ public class Solution {
     }
 
     public static List<Board.Node> clearBoard() {
-        Board b = new Board();
-        for (int i = 0; i < b; i++) {
 
-        }
+
+
         return null;
     }
 
