@@ -17,7 +17,18 @@ public class Solution {
     }
 
     public static void setRewards() {
+        List<Voter> voters = Voter.generateVoters();
+        Rewards rewards = new Rewards();
 
+        for (Voter voter : voters) {
+            boolean isGood = voter.getPersonalQuality().equals("Good");
+            boolean isHoly = voter.getPersonalQuality().equals("Holy");
+            if (isGood) {
+                corporatePyramid.put(voter, rewards.getGoodRewardsMap());
+            } else if (isHoly) {
+                corporatePyramid.put(voter, rewards.getHolyRewardsMap());
+            }
+        }
     }
 
     public static void printMap(Map<?, ?> map) {
