@@ -12,10 +12,6 @@ public class Solution {
     }
 
     public static Month getNextMonth(Month month) {
-        Month [] months = Month.values();
-        for (Month  :months
-             ) {
-            if ()
-        }
+        return null;
     }
 }
