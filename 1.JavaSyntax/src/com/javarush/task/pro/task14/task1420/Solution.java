@@ -40,5 +40,15 @@ public class Solution {
         }
     }
 
-    //напишите тут ваш код
+    public static void checkAnswers (int i) throws WrongAnswerException  {
+        switch (i){
+            case 1 :throw  new WrongAnswerException("Не совсем...Даём тебе еще один шанс.");
+            case 2 : throw new  WrongAnswerException("Я вижу ты любишь играть с огнём!");
+            case 3 : throw new  WrongAnswerException("Еще один такой ответ, и мы сдадим тебя на металолом!");
+            case 4 :
+                System.out.println( "Правильный ответ.");
+                break;
+        }
+
+    }
 }
