@@ -1,5 +1,7 @@
 package com.javarush.task.pro.task13.task1314;
 
+import javax.management.modelmbean.ModelMBeanNotificationBroadcaster;
+
 public class StringLinkedList {
     private Node first = new Node();
     private Node last = new Node();
@@ -25,7 +27,19 @@ public class StringLinkedList {
     }
 
     public String get(int index) {
-      return null;
+        int counter = 0 ;
+        Node node = first.next;
+        while (node != null) {
+            if (counter == index) {
+                return node.value;
+            }
+            node = node.next;
+            counter++;
+
+        }
+
+
+        return null;
     }
 
     public static class Node {
