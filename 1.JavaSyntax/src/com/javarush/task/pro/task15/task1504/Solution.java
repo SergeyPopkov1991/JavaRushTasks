@@ -17,8 +17,20 @@ public class Solution {
         String fileName2 = scanner.nextLine();
         try (InputStream inputStream = Files.newInputStream(Paths.get(fileName1));
         OutputStream outputStream = Files.newOutputStream(Paths.get(fileName2))) {
-            byte[] bytes = inputStream.readAllBytes();
-            outputStream.write(bytes);
+            byte[] bytesIn = inputStream.readAllBytes();
+            byte[] bytesOut = new byte[bytesIn.length];
+            for (int i = 0; i < bytesIn.length; i+=2) {
+                if (i < bytesIn.length -1) {
+
+                    bytesOut[i] = bytesIn[i+1];
+                    bytesOut[i+1] = bytesIn[i];
+                } else {
+                    bytesOut[i] = bytesIn[i];
+                }
+
+            }
+
+            outputStream.write(bytesOut);
 
         }
 
