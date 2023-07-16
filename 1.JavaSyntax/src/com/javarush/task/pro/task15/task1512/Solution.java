@@ -17,7 +17,7 @@ public class Solution {
         Scanner scanner = new Scanner(System.in);
         printSomething(scanner.nextLine());
         String result = outputStream.toString();
-        //напишите тут ваш код
+        outputStream.reset();
     }
 
     public static void printSomething(String str) {
