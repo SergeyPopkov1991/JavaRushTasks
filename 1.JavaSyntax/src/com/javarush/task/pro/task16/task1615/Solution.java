@@ -23,36 +23,36 @@ public class Solution {
     static public Instant plusMinutes(Instant instant, long minutes) {
         //напишите тут ваш код
 
-        return null;
+        return instant.plus( minutes,ChronoUnit.MINUTES );
     }
 
     static public Instant plusHours(Instant instant, long hours) {
         //напишите тут ваш код
 
-        return null;
+        return instant.plus(hours , ChronoUnit.HOURS);
     }
 
     static public Instant plusDays(Instant instant, long days) {
         //напишите тут ваш код
 
-        return null;
+        return instant.plus(days , ChronoUnit.DAYS);
     }
 
     static public Instant minusMinutes(Instant instant, long minutes) {
         //напишите тут ваш код
 
-        return null;
+        return instant.minus(minutes , ChronoUnit.MINUTES);
     }
 
     static public Instant minusHours(Instant instant, long hours) {
         //напишите тут ваш код
 
-        return null;
+        return instant.minus(hours , ChronoUnit.HOURS);
     }
 
     static public Instant minusDays(Instant instant, long days) {
         //напишите тут ваш код
 
-        return null;
+        return instant.minus(days , ChronoUnit.DAYS);
     }
 }
