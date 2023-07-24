@@ -15,15 +15,16 @@ public class Solution {
         Scanner scanner = new Scanner(System.in);
         Path sourceDirectory = Path.of(scanner.nextLine());
         Path targetDirectory = Path.of(scanner.nextLine());
-        try(  DirectoryStream<Path> directoryStream = Files.newDirectoryStream(sourceDirectory)) {
+        try ( DirectoryStream<Path> paths = Files.newDirectoryStream(sourceDirectory);){
 
-            for (Path path : directoryStream) {
-                if (Files.isRegularFile(path)){
-
+            for (Path path : paths) {
+                if (Files.isRegularFile(path)) {
+                    Files.move(path, targetDirectory.resolve(path.getFileName()));
                 }
-            }
 
+            }
         }
+
     }
 }
 

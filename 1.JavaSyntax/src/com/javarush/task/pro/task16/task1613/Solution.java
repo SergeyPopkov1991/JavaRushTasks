@@ -1,5 +1,6 @@
 package com.javarush.task.pro.task16.task1613;
 
+import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +35,19 @@ public class Solution {
     }
 
     public static boolean isWeekend(LocalDateTime dateTime) {
+        DayOfWeek dayOfWeek = dateTime.getDayOfWeek();
+        if (dayOfWeek.getValue()==FRIDAY && dateTime.getHour() >= WEEKEND_START_FRIDAY_CUT_OFF_HOUR) {
+            return true;
+        }
 
+        if (dayOfWeek.getValue()==SATURDAY) {
+            return true;
+        }
 
-        return false;
+        if (dayOfWeek.getValue() == SUNDAY && dateTime.getHour() < WEEKEND_END_SUNDAY_CUT_OFF_HOUR) {
+            return true;
+        }
+
+       return false;
     }
 }

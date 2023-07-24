@@ -18,6 +18,13 @@ public class Solution {
         printSomething(scanner.nextLine());
         String result = outputStream.toString();
         outputStream.reset();
+
+        StringBuilder stringBuilder = new StringBuilder(result);
+        stringBuilder.reverse();
+        String string = stringBuilder.toString();
+        printSomething(string);
+        System.out.println(outputStream);
+
     }
 
     public static void printSomething(String str) {
