@@ -18,7 +18,6 @@ public class Solution {
         if (array == null || array.length == 0) {
             return new Pair<Integer, Integer>(null, null);
         }
-
         int index = 0;
         for (int i = 1; i < array.length; i++) {
             if (array[i] < array[index]) {
