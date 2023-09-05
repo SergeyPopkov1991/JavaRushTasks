@@ -45,7 +45,17 @@ public class Solution {
         private List<String> result = new ArrayList<String>();
 
         public void run() {
-            //напишите тут ваш код
+
+            while (!isInterrupted()) {
+                try {
+                    String line = reader.readLine();
+                    result.add(line);
+
+                } catch (IOException e) {
+
+                }
+
+            }
         }
 
         @Override
