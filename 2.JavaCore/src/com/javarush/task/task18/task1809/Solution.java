@@ -10,7 +10,23 @@ import java.util.List;
 */
 
 public class Solution {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String input = reader.readLine();
+        String output = reader.readLine();
 
+        try (FileInputStream inputStream = new FileInputStream(input);
+        FileOutputStream outputStream = new FileOutputStream(output)) {
+
+            List<Integer> inputbytes = new ArrayList<>();
+            while (inputStream.available() > 0) {
+                inputbytes.add(inputStream.read());
+            }
+            Collections.reverse(inputbytes);
+            for (Integer inputbyte : inputbytes) {
+                outputStream.write(inputbyte);
+            }
+
+        }
     }
 }
