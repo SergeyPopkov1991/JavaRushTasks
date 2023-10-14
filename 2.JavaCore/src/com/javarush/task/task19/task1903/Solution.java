@@ -46,14 +46,19 @@ public class Solution {
 
         @Override
         public String getPhoneNumber() {
-            String res = String.format("+%d(%2$s)%3$s-%4$s-%5$s", data.getCountryPhoneCode(),
-                    String.format("%010d", data.getPhoneNumber()).substring(0, 3),
-                    String.format("%010d", data.getPhoneNumber()).substring(3, 6),
-                    String.format("%010d", data.getPhoneNumber()).substring(6, 8),
-                    String.format("%010d", data.getPhoneNumber()).substring(8));
-
-            return res;
+            String phoneNumber = String.valueOf(data.getPhoneNumber());
+            while (phoneNumber.length() < 10) {
+                phoneNumber = 0 + phoneNumber;
+            }
+            String city = phoneNumber.substring(0, 3);
+            String part1 = phoneNumber.substring(3, 6);
+            String part2 = phoneNumber.substring(6, 8);
+            String part3 = phoneNumber.substring(8);
+            return "+" + data.getCountryPhoneCode() + "(" + city + ")" + part1 + "-" + part2 + "-" + part3;
         }
+
+
+
     }
 
 
@@ -80,6 +85,6 @@ public class Solution {
     public interface Contact {
         String getName();               //For example: Ivanov, Ivan
 
-        String getPhoneNumber();        //For example1: +38(050)123-45-67, For example2: +38(007)111-22-33
+        String getPhoneNumber();        //For example1: +38(005)123-45-67, For example2: +38(007)111-22-33
     }
 }
