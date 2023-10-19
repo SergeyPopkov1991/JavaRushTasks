@@ -10,10 +10,8 @@ import java.util.TreeMap;
 */
 
 public class Solution {
-    public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(args[0]));
-        while (reader.ready()) {
-            String string = reader.readLine();
-        }
+    public static void main(String[] args) {
+
+
     }
 }
