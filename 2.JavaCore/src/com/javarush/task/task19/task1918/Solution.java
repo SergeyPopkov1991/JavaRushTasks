@@ -1,5 +1,10 @@
 package com.javarush.task.task19.task1918;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.parser.Parser;
+import org.jsoup.select.Elements;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -12,16 +17,17 @@ import java.util.ArrayList;
 
 public class Solution {
     public static void main(String[] args) throws IOException {
+        StringBuilder builder = new StringBuilder();
 
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        String fileName = bufferedReader.readLine();
-        bufferedReader.close();
-
-        FileReader reader = new FileReader(fileName);
-        reader.close();
-
-
-
+        try(BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader reader = new BufferedReader(new FileReader(console.readLine()))){
+            while (reader.ready()) {
+                builder.append(reader.readLine());
+            }
+        }
+        Document document = Jsoup.parse(builder.toString(), "", Parser.xmlParser());
+        Elements elements = document.select(args[0]);
+        elements.forEach(System.out::println);
 
     }
 }

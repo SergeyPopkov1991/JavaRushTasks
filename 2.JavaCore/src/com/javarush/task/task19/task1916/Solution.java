@@ -14,7 +14,52 @@ import java.util.List;
 public class Solution {
     public static List<LineItem> lines = new ArrayList<LineItem>();
 
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws IOException {
+        List<String> list1 = new ArrayList<>();
+        List<String> list2 = new ArrayList<>();
+
+
+        try (BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
+             BufferedReader reader1 = new BufferedReader(new FileReader(console.readLine()));
+             BufferedReader reader2 = new BufferedReader(new FileReader(console.readLine()))) {
+            while (reader1.ready()) {
+                list1.add(reader1.readLine());
+
+            }
+
+            while (reader2.ready()) {
+                list2.add(reader2.readLine());
+            }
+
+
+        }
+
+        while (!list1.isEmpty() && !list2.isEmpty()) {
+            if (list1.get(0).equals(list2.get(0))) {
+                lines.add(new LineItem(Type.SAME , list1.get(0)));
+                list1.remove(0);
+                list2.remove(0);
+            } else if (list1.get(0).equals(list2.get(1))) {
+                lines.add(new LineItem(Type.ADDED , list2.get(0)));
+                list2.remove(0);
+            } else if (list1.get(1).equals(list2.get(0))) {
+                lines.add(new LineItem(Type.REMOVED , list1.get(0)));
+                list1.remove(0);
+            }
+        }
+        if (list1.isEmpty()) {
+            list2.forEach(string -> lines.add(new LineItem(Type.ADDED , string)));
+        }
+
+        if (list2.isEmpty()) {
+            list1.forEach(string -> lines.add(new LineItem(Type.ADDED , string)));
+        }
+
+
+        lines.forEach(System.out::println);
+
+
     }
 
 
@@ -28,9 +73,16 @@ public class Solution {
         public Type type;
         public String line;
 
+
+
         public LineItem(Type type, String line) {
             this.type = type;
             this.line = line;
+        }
+
+        @Override
+        public String toString() {
+            return type + " " + line;
         }
     }
 }
