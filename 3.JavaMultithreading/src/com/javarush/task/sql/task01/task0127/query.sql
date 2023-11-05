@@ -1,0 +1,1 @@
+SELECT * FROM car where model NOT LIKE '%a%' AND quantity - booked_quantity   between 5 AND 500
