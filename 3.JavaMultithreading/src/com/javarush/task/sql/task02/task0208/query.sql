@@ -1,0 +1,1 @@
+SELECT ifnull(null ,'yes')

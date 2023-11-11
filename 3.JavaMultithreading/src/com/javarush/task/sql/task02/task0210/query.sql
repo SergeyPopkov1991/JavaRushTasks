@@ -1,0 +1,1 @@
+SELECT NULLIF(1,1)
