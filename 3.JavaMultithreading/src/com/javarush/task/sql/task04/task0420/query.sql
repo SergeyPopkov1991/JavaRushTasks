@@ -1,0 +1,1 @@
+select HOUR(curtime()) , MIN(curtime()) , second(curtime())
