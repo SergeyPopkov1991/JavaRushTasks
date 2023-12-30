@@ -45,16 +45,17 @@ public class Solution {
         private List<String> result = new ArrayList<String>();
 
         public void run() {
-
-            while (!isInterrupted()) {
+            while (!isInterrupted()){
                 try {
-                    String line = reader.readLine();
-                    result.add(line);
 
-                } catch (IOException e) {
+                    while (reader.ready()) {
+                        readStringCount.incrementAndGet();
+                        String string = reader.readLine();
+                        result.add(string);
+                    }
+                }catch (IOException ignore) {
 
                 }
-
             }
         }
 

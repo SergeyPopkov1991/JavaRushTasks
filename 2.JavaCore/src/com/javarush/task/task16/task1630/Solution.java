@@ -13,18 +13,27 @@ public class Solution {
     public static String firstFileName;
     public static String secondFileName;
 
-    //напишите тут ваш код
+    static {
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
+            firstFileName = bufferedReader.readLine();
+            secondFileName = bufferedReader.readLine();
+        } catch (IOException ignore) {
+
+        }
+    }
 
     public static void main(String[] args) throws InterruptedException {
         systemOutPrintln(firstFileName);
         systemOutPrintln(secondFileName);
+
     }
 
     public static void systemOutPrintln(String fileName) throws InterruptedException {
-     //   ReadFileInterface f = new ReadFileThread();
-       // f.setFileName(fileName);
-        //f.start();
-       // System.out.println(f.getFileContent());
+        ReadFileInterface f = new ReadFileThread();
+        f.setFileName(fileName);
+        f.start();
+        f.join();
+        System.out.println(f.getFileContent());
     }
 
     public interface ReadFileInterface {
@@ -38,5 +47,34 @@ public class Solution {
         void start();
     }
 
-    //напишите тут ваш код
+    public static class ReadFileThread extends Thread implements ReadFileInterface {
+
+        private String fullFileName;
+        private StringBuilder builder = new StringBuilder();
+
+        @Override
+        public void setFileName(String fullFileName) {
+            this.fullFileName = fullFileName;
+        }
+
+        @Override
+        public String getFileContent() {
+            return builder.toString();
+        }
+
+        @Override
+        public void run() {
+            try(BufferedReader  bfr = new BufferedReader(new FileReader(fullFileName))) {
+                while (bfr.ready()) {
+                    String string = bfr.readLine();
+                    builder.append(string).append(" ");
+                }
+
+            }catch (IOException ignore) {
+
+            }
+
+        }
+
+    }
 }
