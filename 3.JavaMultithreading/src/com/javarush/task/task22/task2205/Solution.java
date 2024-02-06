@@ -12,6 +12,6 @@ public class Solution {
     }
 
     public static String getFormattedString() {
-        return String.format();
+        return null;
     }
 }
