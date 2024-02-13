@@ -14,6 +14,5 @@ public class Solution {
 
     public static void main(String[] args) throws TooShortStringException {
         System.out.println(getPartOfString("\tJavaRush - лучший сервис \tобучения Java\t."));
-
     }
 }
