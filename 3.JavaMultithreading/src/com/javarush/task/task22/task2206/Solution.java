@@ -1,5 +1,6 @@
 package com.javarush.task.task22.task2206;
 
+import java.text.DateFormat;
 import java.util.Date;
 
 /* 
@@ -15,6 +16,6 @@ public class Solution {
     }
 
     public static String getFormattedString() {
-        return "";
+        return "%td:%tm:%ty %tH:%tM:%tS";
     }
 }
