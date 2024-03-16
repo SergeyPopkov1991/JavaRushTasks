@@ -1,9 +1,6 @@
 package com.javarush.task.task25.task2502;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /* 
 Машину на СТО не повезем!
@@ -21,7 +18,9 @@ public class Solution {
         protected List<Wheel> wheels;
 
         public Car() {
-            //init wheels here
+           if (loadWheelNamesFromDB().length != 4) throw new IllegalArgumentException();
+           wheels = new ArrayList<>();
+            Arrays.stream(loadWheelNamesFromDB()).forEach(wheel -> wheels.add(Wheel.valueOf(wheel)));
         }
 
         protected String[] loadWheelNamesFromDB() {

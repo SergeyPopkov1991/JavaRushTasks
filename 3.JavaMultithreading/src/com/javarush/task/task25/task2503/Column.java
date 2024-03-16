@@ -1,5 +1,6 @@
 package com.javarush.task.task25.task2503;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -50,27 +51,31 @@ public enum Column implements Columnable {
      */
     public static List<Column> getVisibleColumns() {
         List<Column> result = new LinkedList<>();
+        for (int i = 0; i < values().length; i++) {
+            result.add(null);
+        }
+        for (int i = 0; i < values().length; i++) {
+            if (realOrder[i] > -1) {
+                result.set(realOrder[i],values()[i]);
+            }
+        }
+       result.removeAll(Collections.singleton(null));
 
         return result;
     }
 
     @Override
-    public String toString() {
-        return super.toString();
-    }
-
-    @Override
     public String getColumnName() {
-    return columnName;
+        return columnName;
     }
 
     @Override
     public boolean isShown() {
-        return false;
+        return realOrder[ordinal()] > -1;
     }
 
     @Override
     public void hide() {
-
+        realOrder[ordinal()] = -1;
     }
 }
