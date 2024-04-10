@@ -6,17 +6,36 @@ package com.javarush.task.task26.task2607;
 
 public class Solution {
     public static void main(String[] args) {
+        Task task1 = new Task();
+        Task task2 = new Task();
+
     }
 
-    public static class IntegerHolder {
-        private int value;
 
-        public synchronized int get() {
-            return value;
+    private static int value;
+
+    public static  int get() {
+        return value;
+    }
+
+    public static  void set(int value) {
+        Solution.value = value;
+    }
+
+
+    public static class Task extends Thread {
+
+        public Task() {
+            start();
         }
 
-        public synchronized void set(int value) {
-            this.value = value;
+        @Override
+        public void run() {
+            System.out.println(Solution.get());
+            for (int i = 0; i < 1000 ; i++) {
+                Solution.set(Solution.get() + 1);
+            }
+            System.out.println(Solution.get());
         }
     }
 }
