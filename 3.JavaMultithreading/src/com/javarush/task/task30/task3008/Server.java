@@ -49,7 +49,21 @@ public class Server {
 
         @Override
         public void run() {
-            super.run();
+            ConsoleHelper.writeMessage("Установлено новое соединение c адресом" + socket.getRemoteSocketAddress());
+            String name = null;
+            try (Connection connection = new Connection(socket)) {
+                name = serverHandshake(connection);
+                sendBroadcastMessage(new Message(MessageType.USER_ADDED, name));
+                notifyUsers(connection, name);
+                serverMainLoop(connection, name);
+            } catch (IOException | ClassNotFoundException e) {
+                ConsoleHelper.writeMessage("Произошла ошибка при обмене данными с удаленным адресом!");
+            }
+            if (Objects.nonNull(name)) {
+                connectionMap.remove(name);
+                sendBroadcastMessage(new Message(MessageType.USER_REMOVED, name));
+            }
+            ConsoleHelper.writeMessage("Соединение с удаленным адресом закрыто" + socket.getRemoteSocketAddress());
         }
 
 
@@ -75,17 +89,17 @@ public class Server {
 
         private void notifyUsers(Connection connection, String userName) throws IOException {
             for (String name : connectionMap.keySet()) {
-               if (!name.equals(userName)) {
-                   connection.send(new Message(MessageType.USER_ADDED , name));
-               }
+                if (!name.equals(userName)) {
+                    connection.send(new Message(MessageType.USER_ADDED, name));
+                }
             }
         }
 
         private void serverMainLoop(Connection connection, String userName) throws IOException, ClassNotFoundException {
             while (true) {
                 Message message = connection.receive();
-                if (message.getType()==(MessageType.TEXT)) {
-                    sendBroadcastMessage(new Message(MessageType.TEXT , userName+ ": " + message.getData()));
+                if (message.getType() == (MessageType.TEXT)) {
+                    sendBroadcastMessage(new Message(MessageType.TEXT, userName + ": " + message.getData()));
                 } else {
                     ConsoleHelper.writeMessage("Ошибка");
                 }
