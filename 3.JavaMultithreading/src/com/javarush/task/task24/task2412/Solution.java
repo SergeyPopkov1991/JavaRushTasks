@@ -42,7 +42,37 @@ public class Solution {
     }
 
     public static void sort(List<Stock> list) {
-        Comparator<Stock> comparator = new Comparator<>() {
+        Comparator<Stock> comparator2 = new Comparator<Stock>() {
+            @Override
+            public int compare(Stock o1, Stock o2) {
+                double changeA = o1.containsKey("change") ?
+                        (double) o1.get("change") :
+                        (double) (o1.get("last")) - (double) (o1.get("open"));
+
+                double changeB = o2.containsKey("change") ?
+                        (double) o2.get("change") :
+                        (double) (o2.get("last")) - (double) (o2.get("open"));
+
+                return Double.compare(changeB , changeA);
+
+            }
+        };
+        list.sort(comparator2);
+
+        Comparator<Stock> comparator1 = new Comparator<Stock>() {
+            @Override
+            public int compare(Stock o1, Stock o2) {
+                Date date1 = (Date) o1.get("date");
+                Date date2 = (Date) o2.get("date");
+
+                return date2.compareTo(date1);
+
+            }
+        };
+        list.sort(comparator1);
+
+
+        Comparator<Stock> comparator = new Comparator<Stock>() {
             @Override
             public int compare(Stock o1, Stock o2) {
 
@@ -50,6 +80,9 @@ public class Solution {
             }
         };
         list.sort(comparator);
+
+
+
     }
 
     public static class Stock extends HashMap<String, Object> {
